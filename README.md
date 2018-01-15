@@ -44,7 +44,7 @@ To create html you can call
 
 and you get back divs for the data boxes and the lines which connect them. You can specify a template for the content of the data boxes by putting a handlebars template string into the render method. If you don't use that parameter the template `"{{name}}"` is used.
 
-You can use genea.js either in node.js or in the browser with [http://browserify.org/](browserify) like example_1.
+You can use genea.js either in node.js or in the browser with [https://github.com/jlp0422/family_tree/blob/master/examples/example_1/index.html](browserify) like example_1.
 
 Tests
 -----
