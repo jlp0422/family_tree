@@ -2,546 +2,615 @@
 var myTree = require('./data');
 var ChartHelper = require('../../').ChartHelper;
 
-document.getElementById("chart").innerHTML = ChartHelper.render(myTree, 3,
-  "{{name}}<br />" +
-  "{{#if birth}}* {{birth}}<br />{{/if}}" +
-  "{{#if death}}† {{death}}{{/if}}");
+document.getElementById("chart").innerHTML = ChartHelper.render(myTree, 5,
+  "<strong>{{name}}</strong><br />" +
+  "{{#if birthplace}} Birthplace: {{birthplace}}<br />{{/if}}" +
+  "{{#if born}} Born: {{born}}<br />{{/if}}" +
+  "{{#if death}}† Died: {{death}}{{/if}}");
 },{"../../":19,"./data":2}],2:[function(require,module,exports){
-var myTree = {
-  pedigree: {
-    data: {
-      name: "Me",
-      gender: "male",
-      birth: "xx.xx.xxxx"
+  var myTree = {
+    pedigree: {
+      data: {
+        name: 'Jeremy Philipson',
+        gender: 'male',
+        born: 1992,
+        birthplace: 'Utica, NY',
+      },
+      // spouses: [
+      //   {
+      //     data: {
+      //       name: 'S1',
+      //       gender: 'female',
+      //       born: 'xx.xx.xxxx'
+      //     },
+      //     children: [
+      //       {
+      //         data: {
+      //           name: 'Child 1',
+      //           gender: 'male',
+      //           born: 'xx.xx.xxxx'
+      //         }
+      //       },
+      //       {
+      //         data: {
+      //           name: 'Child 2',
+      //           gender: 'male',
+      //           born: 'xx.xx.xxxx'
+      //         }
+      //       }
+      //     ]
+      //   }
+      // ]
     },
-    spouses: [
+    siblings1: [
       {
         data: {
-          name: "S1",
-          gender: "female",
-          birth: "xx.xx.xxxx"
+          name: 'Evan Philipson',
+          gender: 'male',
+          born: 1989,
+          birthplace: 'Utica, NY'
         },
-        children: [
-          {
-            data: {
-              name: "Child 1",
-              gender: "male",
-              birth: "xx.xx.xxxx"
-            }
-          },
-          {
-            data: {
-              name: "Child 2",
-              gender: "male",
-              birth: "xx.xx.xxxx"
-            }
-          }
-        ]
-      }
-    ]
-  },
-  siblings1: [
-    {
-      data: {
-        name: "Brother 1",
-        gender: "male",
-        birth: "xx.xx.xxxx"
       },
-      spouses: [
-        {
-          data: {
-            name: "Brother 1s spouse",
-            gender: "female",
-            birth: "xx.xx.xxxx"
-          },
-          children: [
-            {
-              data: {
-                name: "Brother 1s daughter 1",
-                gender: "female",
-                birth: "xx.xx.xxxx"
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      data: {
-        name: "Brother 2",
-        gender: "male",
-        birth: "xx.xx.xxxx"
-      },
-      spouses: [
-        {
-          data: {
-            name: "S2",
-            gender: "female",
-            birth: "xx.xx.xxxx"
-          },
-          children: [
-            {
-              data: {
-                name: "Brother 2s daughter 1",
-                gender: "female",
-                birth: "xx.xx.xxxx"
-              }
-            },
-            {
-              data: {
-                name: "Brother 2s daughter 2",
-                gender: "female",
-                birth: "xx.xx.xxxx"
-              }
-            },
-            {
-              data: {
-                name: "Brother 2s son",
-                gender: "male",
-                birth: "xx.xx.xxxx"
-              }
-            }
-          ]
-        }
-      ]
-    }
-  ],
-  mother_siblings: [
-    {
-      data: {
-        name: "1 Aunt 1",
-        gender: "female",
-        birth: "xx.xx.xxxx"
-      },
-      spouses: [
-        {
-          data: {
-            name: "S3",
-            gender: "male",
-            birth: "xx.xx.xxxx"
-          },
-          children: [
-            {
-              data: {
-                name: "1 Aunt 1s son 1",
-                gender: "male",
-                birth: "xx.xx.xxxx"
-              }
-            },
-            {
-              data: {
-                name: "1 Aunt 1s son 2",
-                gender: "male",
-                birth: "xx.xx.xxxx"
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      data: {
-        name: "1 Aunt 2",
-        gender: "female",
-        birth: "xx.xx.xxxx"
-      },
-      spouses: [
-        {
-          data: {
-            name: "S4",
-            gender: "male",
-            birth: "xx.xx.xxxx"
-          },
-          children: [
-            {
-              data: {
-                name: "1 Aunt 2s son 1",
-                gender: "male",
-                birth: "xx.xx.xxxx"
-              }
-            },
-            {
-              data: {
-                name: "1 Aunt 2s daughter",
-                gender: "female",
-                birth: "xx.xx.xxxx"
-              }
-            },
-            {
-              data: {
-                name: "1 Aunt 2s son 2",
-                gender: "male",
-                birth: "xx.xx.xxxx"
-              }
-            },
-            {
-              data: {
-                name: "1 Aunt 2s son 3",
-                gender: "male",
-                birth: "xx.xx.xxxx"
-              }
-            },
-            {
-              data: {
-                name: "1 Aunt 2s daughter",
-                gender: "female",
-                birth: "xx.xx.xxxx"
-              }
-            },
-            {
-              data: {
-                name: "1 Aunt 2s daughter",
-                gender: "female",
-                birth: "xx.xx.xxxx"
-              }
-            }
-          ]
+    ],
+    siblings2: [
+      {
+        data: {
+          name: 'Rachel Philipson',
+          gender: 'female',
+          born: 1995,
+          birthplace: 'Utica, NY'
         },
-        {
-          data: {
-            name: "S4a",
-            gender: "male",
-            birth: "xx.xx.xxxx"
-          },
-          children: [
-            {
-              data: {
-                name: "a1 Aunt 2s son 1",
-                gender: "male",
-                birth: "xx.xx.xxxx"
-              }
-            },
-            {
-              data: {
-                name: "a1 Aunt 2s daughter",
-                gender: "female",
-                birth: "xx.xx.xxxx"
-              }
-            },
-            {
-              data: {
-                name: "a1 Aunt 2s son 2",
-                gender: "male",
-                birth: "xx.xx.xxxx"
-              }
-            },
-            {
-              data: {
-                name: "a1 Aunt 2s son 3",
-                gender: "male",
-                birth: "xx.xx.xxxx"
-              }
-            },
-            {
-              data: {
-                name: "a1 Aunt 2s daughter",
-                gender: "female",
-                birth: "xx.xx.xxxx"
-              }
-            },
-            {
-              data: {
-                name: "a1 Aunt 2s daughter",
-                gender: "female",
-                birth: "xx.xx.xxxx"
-              }
-            }
-          ]
-        },
-        {
-          data: {
-            name: "S4b",
-            gender: "male",
-            birth: "xx.xx.xxxx"
-          },
-          children: [
-            {
-              data: {
-                name: "b1 Aunt 2s son 1",
-                gender: "male",
-                birth: "xx.xx.xxxx"
-              }
-            }
-          ]
-        },
-        {
-          data: {
-            name: "S4c",
-            gender: "male",
-            birth: "xx.xx.xxxx"
-          }
-        }
-      ]
-    },
-    /*{
-      data: {
-        name: "Aunt 1",
-        gender: "female",
-        birth: "xx.xx.xxxx"
       },
-      spouses: [
-        {
-          data: {
-            name: "S5",
-            gender: "male",
-            birth: "xx.xx.xxxx"
-          },
-          children: [
-            {
-              data: {
-                name: "Aunt 1s son 1",
-                gender: "male",
-                birth: "xx.xx.xxxx"
-              },
-              spouses: [
-                {
-                  data: {
-                    name: "S6",
-                    gender: "female",
-                    birth: "xx.xx.xxxx"
-                  },
-                  children: [
-                    {
-                      data: {
-                        name: "Aunt 1s son 1s son",
-                        gender: "male",
-                        birth: "xx.xx.xxxx"
-                      },
-                      spouses: [
-                        {
-                          data: {
-                            name: "Aunt 1s son 1s sons spouse",
-                            gender: "female",
-                            birth: "xx.xx.xxxx"
-                          },
-                          children: [
-                            {
-                              data: {
-                                name: "Aunt 1s son 1s sons son",
-                                gender: "male",
-                                birth: "xx.xx.xxxx"
-                              }
-                            }
-                          ]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              data: {
-                name: "Aunt 1s son 2",
-                gender: "male",
-                birth: "xx.xx.xxxx"
-              }
-            }
-          ]
-        }
-      ]
-    }*/
-  ],
-  father_siblings: [
-    {
-      data: {
-        name: "Aunt 0",
-        gender: "female",
-        birth: "xx.xx.xxxx"
-      }
-    },
-    {
-      data: {
-        name: "Aunt 1",
-        gender: "female",
-        birth: "xx.xx.xxxx"
-      },
-      spouses: [
-        {
-          data: {
-            name: "S5",
-            gender: "male",
-            birth: "xx.xx.xxxx"
-          },
-          children: [
-            {
-              data: {
-                name: "Aunt 1s son 1",
-                gender: "male",
-                birth: "xx.xx.xxxx"
-              },
-              spouses: [
-                {
-                  data: {
-                    name: "S6",
-                    gender: "female",
-                    birth: "xx.xx.xxxx"
-                  },
-                  children: [
-                    {
-                      data: {
-                        name: "Aunt 1s son 1s son",
-                        gender: "male",
-                        birth: "xx.xx.xxxx"
-                      },
-                      spouses: [
-                        {
-                          data: {
-                            name: "Aunt 1s son 1s sons spouse",
-                            gender: "female",
-                            birth: "xx.xx.xxxx"
-                          },
-                          children: [
-                            {
-                              data: {
-                                name: "Aunt 1s son 1s sons son",
-                                gender: "male",
-                                birth: "xx.xx.xxxx"
-                              }
-                            }
-                          ]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              data: {
-                name: "Aunt 1s son 2",
-                gender: "male",
-                birth: "xx.xx.xxxx"
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      data: {
-        name: "Aunt 2",
-        gender: "female",
-        birth: "xx.xx.xxxx"
-      },
-      spouses: [
-        {
-          data: {
-            name: "S7",
-            gender: "male",
-            birth: "xx.xx.xxxx"
-          },
-          children: [
-            {
-              data: {
-                name: "Aunt 2s son",
-                gender: "male",
-                birth: "xx.xx.xxxx"
-              }
-            },
-            {
-              data: {
-                name: "Aunt 2s daughter",
-                gender: "female",
-                birth: "xx.xx.xxxx"
-              }
-            },
-            {
-              data: {
-                name: "Aunt 2s son",
-                gender: "male",
-                birth: "xx.xx.xxxx"
-              }
-            },
-            {
-              data: {
-                name: "Aunt 2s son",
-                gender: "male",
-                birth: "xx.xx.xxxx"
-              }
-            },
-            {
-              data: {
-                name: "Aunt 2s daughter",
-                gender: "female",
-                birth: "xx.xx.xxxx"
-              }
-            },
-            {
-              data: {
-                name: "Aunt 2s daughter",
-                gender: "female",
-                birth: "xx.xx.xxxx"
-              }
-            }
-          ]
-        }
-      ]
-    }
-  ],
-  father: {
-    data: {
-      name: "Father",
-      gender: "male",
-      birth: "xx.xx.xxxx"
-    }
-  },
-  mother: {
-    data: {
-      name: "Mother",
-      gender: "female",
-      birth: "xx.xx.xxxx"
-    },
+    ],
+    // mother_siblings: [
+    //   {
+    //     data: {
+    //       name: '1 Aunt 1',
+    //       gender: 'female',
+    //       born: 'xx.xx.xxxx'
+    //     },
+    //     spouses: [
+    //       {
+    //         data: {
+    //           name: 'S3',
+    //           gender: 'male',
+    //           born: 'xx.xx.xxxx'
+    //         },
+    //         children: [
+    //           {
+    //             data: {
+    //               name: '1 Aunt 1s son 1',
+    //               gender: 'male',
+    //               born: 'xx.xx.xxxx'
+    //             }
+    //           },
+    //           {
+    //             data: {
+    //               name: '1 Aunt 1s son 2',
+    //               gender: 'male',
+    //               born: 'xx.xx.xxxx'
+    //             }
+    //           }
+    //         ]
+    //       }
+    //     ]
+    //   },
+    //   {
+    //     data: {
+    //       name: '1 Aunt 2',
+    //       gender: 'female',
+    //       born: 'xx.xx.xxxx'
+    //     },
+    //     spouses: [
+    //       {
+    //         data: {
+    //           name: 'S4',
+    //           gender: 'male',
+    //           born: 'xx.xx.xxxx'
+    //         },
+    //         children: [
+    //           {
+    //             data: {
+    //               name: '1 Aunt 2s son 1',
+    //               gender: 'male',
+    //               born: 'xx.xx.xxxx'
+    //             }
+    //           },
+    //           {
+    //             data: {
+    //               name: '1 Aunt 2s daughter',
+    //               gender: 'female',
+    //               born: 'xx.xx.xxxx'
+    //             }
+    //           },
+    //           {
+    //             data: {
+    //               name: '1 Aunt 2s son 2',
+    //               gender: 'male',
+    //               born: 'xx.xx.xxxx'
+    //             }
+    //           },
+    //           {
+    //             data: {
+    //               name: '1 Aunt 2s son 3',
+    //               gender: 'male',
+    //               born: 'xx.xx.xxxx'
+    //             }
+    //           },
+    //           {
+    //             data: {
+    //               name: '1 Aunt 2s daughter',
+    //               gender: 'female',
+    //               born: 'xx.xx.xxxx'
+    //             }
+    //           },
+    //           {
+    //             data: {
+    //               name: '1 Aunt 2s daughter',
+    //               gender: 'female',
+    //               born: 'xx.xx.xxxx'
+    //             }
+    //           }
+    //         ]
+    //       },
+    //       {
+    //         data: {
+    //           name: 'S4a',
+    //           gender: 'male',
+    //           born: 'xx.xx.xxxx'
+    //         },
+    //         children: [
+    //           {
+    //             data: {
+    //               name: 'a1 Aunt 2s son 1',
+    //               gender: 'male',
+    //               born: 'xx.xx.xxxx'
+    //             }
+    //           },
+    //           {
+    //             data: {
+    //               name: 'a1 Aunt 2s daughter',
+    //               gender: 'female',
+    //               born: 'xx.xx.xxxx'
+    //             }
+    //           },
+    //           {
+    //             data: {
+    //               name: 'a1 Aunt 2s son 2',
+    //               gender: 'male',
+    //               born: 'xx.xx.xxxx'
+    //             }
+    //           },
+    //           {
+    //             data: {
+    //               name: 'a1 Aunt 2s son 3',
+    //               gender: 'male',
+    //               born: 'xx.xx.xxxx'
+    //             }
+    //           },
+    //           {
+    //             data: {
+    //               name: 'a1 Aunt 2s daughter',
+    //               gender: 'female',
+    //               born: 'xx.xx.xxxx'
+    //             }
+    //           },
+    //           {
+    //             data: {
+    //               name: 'a1 Aunt 2s daughter',
+    //               gender: 'female',
+    //               born: 'xx.xx.xxxx'
+    //             }
+    //           }
+    //         ]
+    //       },
+    //       {
+    //         data: {
+    //           name: 'S4b',
+    //           gender: 'male',
+    //           born: 'xx.xx.xxxx'
+    //         },
+    //         children: [
+    //           {
+    //             data: {
+    //               name: 'b1 Aunt 2s son 1',
+    //               gender: 'male',
+    //               born: 'xx.xx.xxxx'
+    //             }
+    //           }
+    //         ]
+    //       },
+    //       {
+    //         data: {
+    //           name: 'S4c',
+    //           gender: 'male',
+    //           born: 'xx.xx.xxxx'
+    //         }
+    //       }
+    //     ]
+    //   },
+    //   /*{
+    //     data: {
+    //       name: 'Aunt 1',
+    //       gender: 'female',
+    //       born: 'xx.xx.xxxx'
+    //     },
+    //     spouses: [
+    //       {
+    //         data: {
+    //           name: 'S5',
+    //           gender: 'male',
+    //           born: 'xx.xx.xxxx'
+    //         },
+    //         children: [
+    //           {
+    //             data: {
+    //               name: 'Aunt 1s son 1',
+    //               gender: 'male',
+    //               born: 'xx.xx.xxxx'
+    //             },
+    //             spouses: [
+    //               {
+    //                 data: {
+    //                   name: 'S6',
+    //                   gender: 'female',
+    //                   born: 'xx.xx.xxxx'
+    //                 },
+    //                 children: [
+    //                   {
+    //                     data: {
+    //                       name: 'Aunt 1s son 1s son',
+    //                       gender: 'male',
+    //                       born: 'xx.xx.xxxx'
+    //                     },
+    //                     spouses: [
+    //                       {
+    //                         data: {
+    //                           name: 'Aunt 1s son 1s sons spouse',
+    //                           gender: 'female',
+    //                           born: 'xx.xx.xxxx'
+    //                         },
+    //                         children: [
+    //                           {
+    //                             data: {
+    //                               name: 'Aunt 1s son 1s sons son',
+    //                               gender: 'male',
+    //                               born: 'xx.xx.xxxx'
+    //                             }
+    //                           }
+    //                         ]
+    //                       }
+    //                     ]
+    //                   }
+    //                 ]
+    //               }
+    //             ]
+    //           },
+    //           {
+    //             data: {
+    //               name: 'Aunt 1s son 2',
+    //               gender: 'male',
+    //               born: 'xx.xx.xxxx'
+    //             }
+    //           }
+    //         ]
+    //       }
+    //     ]
+    //   }*/
+    // ],
+    // father_siblings: [
+    //   {
+    //     data: {
+    //       name: 'Aunt 0',
+    //       gender: 'female',
+    //       born: 'xx.xx.xxxx'
+    //     }
+    //   },
+    //   {
+    //     data: {
+    //       name: 'Aunt 1',
+    //       gender: 'female',
+    //       born: 'xx.xx.xxxx'
+    //     },
+    //     spouses: [
+    //       {
+    //         data: {
+    //           name: 'S5',
+    //           gender: 'male',
+    //           born: 'xx.xx.xxxx'
+    //         },
+    //         children: [
+    //           {
+    //             data: {
+    //               name: 'Aunt 1s son 1',
+    //               gender: 'male',
+    //               born: 'xx.xx.xxxx'
+    //             },
+    //             spouses: [
+    //               {
+    //                 data: {
+    //                   name: 'S6',
+    //                   gender: 'female',
+    //                   born: 'xx.xx.xxxx'
+    //                 },
+    //                 children: [
+    //                   {
+    //                     data: {
+    //                       name: 'Aunt 1s son 1s son',
+    //                       gender: 'male',
+    //                       born: 'xx.xx.xxxx'
+    //                     },
+    //                     spouses: [
+    //                       {
+    //                         data: {
+    //                           name: 'Aunt 1s son 1s sons spouse',
+    //                           gender: 'female',
+    //                           born: 'xx.xx.xxxx'
+    //                         },
+    //                         children: [
+    //                           {
+    //                             data: {
+    //                               name: 'Aunt 1s son 1s sons son',
+    //                               gender: 'male',
+    //                               born: 'xx.xx.xxxx'
+    //                             }
+    //                           }
+    //                         ]
+    //                       }
+    //                     ]
+    //                   }
+    //                 ]
+    //               }
+    //             ]
+    //           },
+    //           {
+    //             data: {
+    //               name: 'Aunt 1s son 2',
+    //               gender: 'male',
+    //               born: 'xx.xx.xxxx'
+    //             }
+    //           }
+    //         ]
+    //       }
+    //     ]
+    //   },
+    //   {
+    //     data: {
+    //       name: 'Aunt 2',
+    //       gender: 'female',
+    //       born: 'xx.xx.xxxx'
+    //     },
+    //     spouses: [
+    //       {
+    //         data: {
+    //           name: 'S7',
+    //           gender: 'male',
+    //           born: 'xx.xx.xxxx'
+    //         },
+    //         children: [
+    //           {
+    //             data: {
+    //               name: 'Aunt 2s son',
+    //               gender: 'male',
+    //               born: 'xx.xx.xxxx'
+    //             }
+    //           },
+    //           {
+    //             data: {
+    //               name: 'Aunt 2s daughter',
+    //               gender: 'female',
+    //               born: 'xx.xx.xxxx'
+    //             }
+    //           },
+    //           {
+    //             data: {
+    //               name: 'Aunt 2s son',
+    //               gender: 'male',
+    //               born: 'xx.xx.xxxx'
+    //             }
+    //           },
+    //           {
+    //             data: {
+    //               name: 'Aunt 2s son',
+    //               gender: 'male',
+    //               born: 'xx.xx.xxxx'
+    //             }
+    //           },
+    //           {
+    //             data: {
+    //               name: 'Aunt 2s daughter',
+    //               gender: 'female',
+    //               born: 'xx.xx.xxxx'
+    //             }
+    //           },
+    //           {
+    //             data: {
+    //               name: 'Aunt 2s daughter',
+    //               gender: 'female',
+    //               born: 'xx.xx.xxxx'
+    //             }
+    //           }
+    //         ]
+    //       }
+    //     ]
+    //   }
+    // ],
     father: {
       data: {
-        name: "Grandfather",
-        gender: "male",
-        birth: "xx.xx.xxxx"
+        name: 'Gary Philipson',
+        gender: 'male',
+        born: 1957,
+        birthplace: 'Utica, NY',
       },
       father: {
         data: {
-          name: "Great-grandfather",
-          gender: "male",
-          birth: "xx.xx.xxxx",
-          death: "yy.yy.yyyy"
+          name: 'Herb Philipson',
+          gender: 'male',
+          born: 1922,
+          birthplace: 'Utica, NY'
+        },
+        father: {
+          data: {
+            name: 'Louis Philipson',
+            gender: 'male',
+            born: 1896,
+            birthplace: 'New York, NY'
+          },
+          father: {
+            data: {
+              name: 'Joseph Philipson',
+              gender: 'male',
+              birthplace: 'Lithuania'
+            },
+          },
+          mother: {
+            data: {
+              name: 'Katie Stabinsky Philipson',
+              gender: 'female',
+              birthplace: 'Lithuania'
+            },
+          },
+        },
+        mother: {
+          data: {
+            name: 'Sylvia Golinsky Philipson',
+            gender: 'female',
+            born: 1901,
+            birthplace: 'Russia'
+          },
+          father: {
+            data: {
+              name: 'Joseph Golinsky',
+              gender: 'male',
+              birthplace: 'Bialystok'
+            }
+          },
+          mother: {
+            data: {
+              name: 'Bailey Serling Golinsky',
+              gender: 'female',
+              birthplace: 'Bialystok'
+            },
+            father: {
+              data: {
+                name: 'Peshel Serling',
+                gender: 'male'
+              }
+            },
+            mother: {
+              data: {
+                name: 'Ariel Serling',
+                gender: 'female'
+              }
+            }
+          }
         }
       },
       mother: {
         data: {
-          name: "Great-grandmother",
-          gender: "female",
-          birth: "xx.xx.xxxx",
-          death: "yy.yy.yyyy"
-        }
-      }
+          name: 'Aviva Zuta Philipson',
+          gender: 'female',
+          born: 1929,
+          birthplace: 'New York, NY'
+        },
+        father: {
+          data: {
+            name: 'Eliyahu Zuta',
+            gender: 'male',
+            birthplace: 'Odessa, Russia'
+          },
+          father: {
+            data: {
+              name: 'Aryen Zuta',
+              gender: 'male',
+              birthplace: 'Russia'
+            },
+          },
+        },
+        mother: {
+          data: {
+            name: 'Hadassah Rabinowitz Zuta',
+            gender: 'female',
+            born: 1900,
+            birthplace: 'Rahavet, Israel'
+          },
+          father: {
+            data: {
+              name: 'Meyer Rabinowitz',
+              gender: 'male',
+              birthplace: 'Russia'
+            }
+          },
+          mother: {
+            data: {
+              name: 'Nachaa Schecter Rabinowitz',
+              gender: 'female',
+              birthplace: 'Russia'
+            },
+          },
+        },
+      },
     },
     mother: {
       data: {
-        name: "Grandmother",
-        gender: "female",
-        birth: "xx.xx.xxxx"
+        name: 'Lisa Philipson',
+        gender: 'female',
+        born: 1958,
+        birthplace: 'Miami, FL'
       },
       father: {
         data: {
-          name: "Great-grandfather",
-          gender: "male",
-          birth: "xx.xx.xxxx",
-          death: "yy.yy.yyyy"
-        }
+          name: 'Richard Behren',
+          gender: 'male',
+          born: 1932,
+          birthplace: 'New York, NY'
+        },
+        father: {
+          data: {
+            name: 'Abraham Lester Behren',
+            gender: 'male',
+            born: 1901,
+            birthplace: 'New York, NY'
+          },
+        },
+        mother: {
+          data: {
+            name: 'Rose Richmond Behren',
+            gender: 'female',
+            born: 1902,
+            birthplace: 'Austria'
+          },
+        },
       },
       mother: {
         data: {
-          name: "Great-grandmother",
-          gender: "female",
-          birth: "xx.xx.xxxx",
-          death: "yy.yy.yyyy"
-        }
-      }
-    }
-  }
-};
+          name: 'Leta Goldstrom Behren',
+          gender: 'female',
+          born: 1936,
+          birthplace: 'Miami Beach, FL'
+        },
+        father: {
+          data: {
+            name: 'Melvin Goldstrom',
+            gender: 'male',
+            born: 1901,
+            birthplace: 'Nebraska'
+          },
+        },
+        mother: {
+          data: {
+            name: 'Ruth Williamson Goldstrom',
+            gender: 'female',
+            born: 1907,
+            birthplace: 'Brooklyn, NY'
+          },
+        },
+      },
+    },
+  };
 
-module.exports = myTree;
+  module.exports = myTree;
+
 },{}],3:[function(require,module,exports){
 "use strict";
 /*globals Handlebars: true */
@@ -895,7 +964,7 @@ var AST = {
 
   MustacheNode: function(rawParams, hash, open, strip, locInfo) {
     LocationInfo.call(this, locInfo);
-    this.type = "mustache";
+    this.type = 'mustache';
     this.strip = strip;
 
     // Open may be a string parsed from the parser or a passed boolean flag
@@ -949,7 +1018,7 @@ var AST = {
 
   PartialNode: function(partialName, context, hash, strip, locInfo) {
     LocationInfo.call(this, locInfo);
-    this.type         = "partial";
+    this.type         = 'partial';
     this.partialName  = partialName;
     this.context      = context;
     this.hash = hash;
@@ -959,7 +1028,7 @@ var AST = {
   BlockNode: function(mustache, program, inverse, close, locInfo) {
     LocationInfo.call(this, locInfo);
 
-    if(mustache.sexpr.id.original !== close.path.original) {
+    if (mustache.sexpr.id.original !== close.path.original) {
       throw new Exception(mustache.sexpr.id.original + " doesn't match " + close.path.original, this);
     }
 
@@ -2592,9 +2661,9 @@ performAction: function anonymous(yytext,yyleng,yylineno,yy,yystate,$$,_$) {
 
 var $0 = $$.length - 1;
 switch (yystate) {
-case 1: return new yy.ProgramNode($$[$0-1], this._$); 
+case 1: return new yy.ProgramNode($$[$0-1], this._$);
 break;
-case 2: return new yy.ProgramNode([], this._$); 
+case 2: return new yy.ProgramNode([], this._$);
 break;
 case 3:this.$ = new yy.ProgramNode([], $$[$0-1], $$[$0], this._$);
 break;
@@ -2610,7 +2679,7 @@ case 8:this.$ = new yy.ProgramNode([], this._$);
 break;
 case 9:this.$ = [$$[$0]];
 break;
-case 10: $$[$0-1].push($$[$0]); this.$ = $$[$0-1]; 
+case 10: $$[$0-1].push($$[$0]); this.$ = $$[$0-1];
 break;
 case 11:this.$ = new yy.RawBlockNode($$[$0-2], $$[$0-1], $$[$0], this._$);
 break;
@@ -2674,7 +2743,7 @@ case 40:this.$ = new yy.DataNode($$[$0], this._$);
 break;
 case 41:this.$ = new yy.IdNode($$[$0], this._$);
 break;
-case 42: $$[$0-2].push({part: $$[$0], separator: $$[$0-1]}); this.$ = $$[$0-2]; 
+case 42: $$[$0-2].push({part: $$[$0], separator: $$[$0-1]}); this.$ = $$[$0-2];
 break;
 case 43:this.$ = [{part: $$[$0]}];
 break;
@@ -2996,22 +3065,22 @@ case 0:
                                      this.begin("mu");
                                    }
                                    if(yy_.yytext) return 10;
-                                 
+
 break;
 case 1:return 10;
 break;
 case 2:
                                    this.popState();
                                    return 10;
-                                 
+
 break;
 case 3:
                                   yy_.yytext = yy_.yytext.substr(5, yy_.yyleng-9);
                                   this.popState();
                                   return 11;
-                                 
+
 break;
-case 4: return 10; 
+case 4: return 10;
 break;
 case 5:strip(0,4); this.popState(); return 17;
 break;
@@ -3019,19 +3088,19 @@ case 6:return 40;
 break;
 case 7:return 41;
 break;
-case 8: return 18; 
+case 8: return 18;
 break;
 case 9:
                                   this.popState();
                                   this.begin('raw');
                                   return 20;
-                                 
+
 break;
 case 10:
                                   yy_.yytext = yy_.yytext.substr(4, yy_.yyleng-8);
                                   this.popState();
                                   return 'RAW_BLOCK';
-                                 
+
 break;
 case 11:return 29;
 break;
@@ -3599,8 +3668,8 @@ if (typeof require !== 'undefined' && require.extensions) {
 var Handlebars = require('handlebars');
 
 ChartHelper = {
-  height: 60,
-  width: 150,
+  height: 65,
+  width: 180,
   spacing: 10,
   spacing_v: 20,
   margin: 200,
@@ -3626,7 +3695,7 @@ ChartHelper = {
     var ped_lines = pedigree.lines;
     var ped_right_offset = pedigree.right_offset;
     var ped_left_offset = pedigree.left_offset;
-    
+
     // left value of element #1
     // (half the width of ancestor tree minus half of element width)
     left = Math.pow(2, actualDepth - 1) * (ChartHelper.width + ChartHelper.spacing) -
@@ -3656,16 +3725,16 @@ ChartHelper = {
         }
       });
     }
-    
+
     data = data.concat(ped_data);
     lines = lines.concat(ped_lines);
 
     // space right of possible new elements to element #1
     var right_space = ped_left_offset + ChartHelper.spacing;
-    
+
     // siblings1 (siblings left of element #1)
     if (inAncestors.siblings1) {
-      
+
       returnObject = ChartHelper.renderPart(inAncestors.siblings1,
           left, 0, right_space, 'right');
 
@@ -3673,7 +3742,7 @@ ChartHelper = {
       lines = lines.concat(returnObject.lines);
       right_space = returnObject.space;
     }
-    
+
     // father_siblings (siblings of the father of element #1, they are left of father)
     if (inAncestors.father_siblings) {
 
@@ -3697,11 +3766,11 @@ ChartHelper = {
       right_space = returnObject.space;
 
     }
-    
+
     // now the other side
     // we start with the same space here
     var left_space = ped_right_offset + ChartHelper.spacing;
-    
+
     //siblings2 (siblings on the right)
     if (inAncestors.siblings2) {
       returnObject = ChartHelper.renderPart(inAncestors.siblings2,
@@ -3711,7 +3780,7 @@ ChartHelper = {
       lines = lines.concat(returnObject.lines);
       left_space = returnObject.space;
     }
-    
+
     // mother_siblings
     if (inAncestors.mother_siblings) {
       // left value of the mother of element #1
@@ -3734,7 +3803,7 @@ ChartHelper = {
       data = data.concat(returnObject.data);
       lines = lines.concat(returnObject.lines);
     }
-    
+
     return ChartHelper.draw(data, lines, inTemplate);
   },
   renderAncestors: function(inAncestors, inDepth) {
@@ -3776,8 +3845,8 @@ ChartHelper = {
     if ((inAncestors.mother_siblings || inAncestors.father_siblings) && actualDepth < 2) {
       actualDepth = 2;
     }
-      
-    
+
+
     var data = [];
     var lines = [];
 
@@ -3787,7 +3856,7 @@ ChartHelper = {
 
     // ancestors begins now with topmost level
     ancestors.reverse();
-    
+
     // don't use level with element #1 (was only needed for building the array)
     ancestors.pop();
 
@@ -3807,7 +3876,7 @@ ChartHelper = {
           // plus full width of ancestor tree of current element times the position on the level)
           left = (ChartHelper.width + ChartHelper.spacing) *
             (Math.pow(2, arr_ind - 1) - 0.5 + Math.pow(2, arr_ind) * ancestor_ind);
-          
+
           data.push({
             left: left,
             top: -i * (ChartHelper.height + (ChartHelper.spacing_v * 2)),
@@ -3899,7 +3968,7 @@ ChartHelper = {
       var hor_line_left = direction === 'left' ?
           inLeft + (ChartHelper.width / 2) :
           new_left + (ChartHelper.width / 2);
-      
+
       ped_lines.push({
         left: new_left + (ChartHelper.width / 2),
         top: -(ChartHelper.spacing_v - 2) + inTop,
@@ -3917,7 +3986,7 @@ ChartHelper = {
           len: len
         }
       });
-      
+
       return_data = return_data.concat(ped_data);
       return_lines = return_lines.concat(ped_lines);
     });
@@ -3926,7 +3995,7 @@ ChartHelper = {
   },
   draw: function(inData, inLines, inTemplate) {
     var returnData = "";
-    
+
     // normalize top and left values to get rid of negative values
     var d = ChartHelper.normalize(inData, inLines);
     var data = d.data;
@@ -4000,14 +4069,14 @@ ChartHelper = {
     return {data: returnData, lines: returnLines, height: height, width: width};
   },
   renderPedigree: function(inPedigree) {
-    
+
     var pedigree = ChartHelper.preparePedigree(inPedigree);
 
     var data = [];
     var lines = [];
     var left_offset = 0;
     var right_offset = 0;
-    
+
     ChartHelper.preOrder(pedigree, function(inElement) {
       // center the element
       inElement.left+=((ChartHelper.width + ChartHelper.spacing)*inElement.maxWidth)/2;
@@ -4083,7 +4152,7 @@ ChartHelper = {
     var left1;
     var top;
     var len;
-    
+
     ChartHelper.preOrder(pedigree, function(inElement) {
       // and add lines
 
@@ -4169,7 +4238,7 @@ ChartHelper = {
         });
       }
     });
-    
+
     var root_left = pedigree.left;
     var root_top = pedigree.top;
 
@@ -4285,12 +4354,12 @@ exports.ChartHelper = require('./chart').ChartHelper;
 // needed by chart.js
 function json2Tree(jsonObject, ref) {
   var element = jsonObject.elements[ref];
-  
+
   var myTree = {
     father: getFather(jsonObject, element),
     mother: getMother(jsonObject, element),
-    siblings1: getSiblings(jsonObject, element, element.data.birth, -1),
-    siblings2: getSiblings(jsonObject, element, element.data.birth, 1),
+    siblings1: getSiblings(jsonObject, element, element.data.born, -1),
+    siblings2: getSiblings(jsonObject, element, element.data.born, 1),
     father_siblings: getSiblings(jsonObject, getFatherElement(jsonObject, element)),
     mother_siblings: getSiblings(jsonObject, getMotherElement(jsonObject, element)),
     pedigree: {
@@ -4370,7 +4439,7 @@ function getSiblings(jsonObject, element, compareDate, compareResult) {
           notComparable = false;
 
           if (compareResult) {
-            actualCompareResult = compareGenDate(compareDate, child.data.birth);
+            actualCompareResult = compareGenDate(compareDate, child.data.born);
 
             if (actualCompareResult === null) {
               notComparable = true;
