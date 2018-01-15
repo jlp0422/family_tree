@@ -3672,7 +3672,7 @@ ChartHelper = {
   width: 180,
   spacing: 10,
   spacing_v: 20,
-  margin: 200,
+  margin: 50,
   render: function(inAncestors, inDepth, inTemplate) {
 
     var left;
