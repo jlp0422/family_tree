@@ -488,7 +488,7 @@ document.getElementById("chart").innerHTML = ChartHelper.render(myTree, 5,
           mother: {
             data: {
               name: 'Bailey Serling Golinsky',
-              gender: 'female',
+              gender: 'femaile',
               birthplace: 'Bialystok'
             },
             father: {
@@ -572,6 +572,20 @@ document.getElementById("chart").innerHTML = ChartHelper.render(myTree, 5,
             born: 1901,
             birthplace: 'New York, NY'
           },
+          father: {
+            data: {
+              name: 'Louis D. Behren',
+              gender: 'male',
+              birthplace: 'Russia'
+            }
+          },
+          mother: {
+            data: {
+              name: 'Pauline',
+              gender: 'female',
+              birthplace: 'Russia'
+            },
+          },
         },
         mother: {
           data: {
@@ -579,6 +593,19 @@ document.getElementById("chart").innerHTML = ChartHelper.render(myTree, 5,
             gender: 'female',
             born: 1902,
             birthplace: 'Austria'
+          },
+          father: {
+            data: {
+              name: 'Jacob Richmond',
+              gender: 'male'
+            },
+          },
+          mother: {
+            data: {
+              name: 'Eva Richmond',
+              gender: 'female',
+              birthplace: 'Austria'
+            },
           },
         },
       },
@@ -596,6 +623,20 @@ document.getElementById("chart").innerHTML = ChartHelper.render(myTree, 5,
             born: 1901,
             birthplace: 'Nebraska'
           },
+          father: {
+            data: {
+              name: 'Sol Goldstrom',
+              gender: 'male',
+              birthplace: 'Germany'
+            },
+          },
+          mother: {
+            data: {
+              name: 'Claire Goldstrom',
+              gender: 'female',
+              birthplace: 'Nebraska'
+            },
+          },
         },
         mother: {
           data: {
@@ -604,12 +645,27 @@ document.getElementById("chart").innerHTML = ChartHelper.render(myTree, 5,
             born: 1907,
             birthplace: 'Brooklyn, NY'
           },
+          father: {
+            data: {
+              name: 'Morris Williamson',
+              gender: 'male',
+              birthplace: 'Russia'
+            },
+          },
+          mother: {
+            data: {
+              name: 'Lena Williamson',
+              gender: 'female',
+              birthplace: 'Russia'
+            },
+          },
         },
       },
     },
   };
 
   module.exports = myTree;
+
 
 },{}],3:[function(require,module,exports){
 "use strict";

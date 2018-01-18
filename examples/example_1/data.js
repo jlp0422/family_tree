@@ -640,15 +640,15 @@ var myTree = {
             name: 'Morris Williamson',
             gender: 'male',
             birthplace: 'Russia'
-          }
+          },
         },
         mother: {
           data: {
             name: 'Lena Williamson',
             gender: 'female',
             birthplace: 'Russia'
-          }
-        }
+          },
+        },
       },
     },
   },
