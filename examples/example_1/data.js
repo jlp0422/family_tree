@@ -562,6 +562,20 @@ var myTree = {
           born: 1901,
           birthplace: 'New York, NY'
         },
+        father: {
+          data: {
+            name: 'Louis D. Behren',
+            gender: 'male',
+            birthplace: 'Russia'
+          }
+        },
+        mother: {
+          data: {
+            name: 'Pauline',
+            gender: 'female',
+            birthplace: 'Russia'
+          },
+        },
       },
       mother: {
         data: {
@@ -569,6 +583,19 @@ var myTree = {
           gender: 'female',
           born: 1902,
           birthplace: 'Austria'
+        },
+        father: {
+          data: {
+            name: 'Jacob Richmond',
+            gender: 'male'
+          },
+        },
+        mother: {
+          data: {
+            name: 'Eva Richmond',
+            gender: 'female',
+            birthplace: 'Austria'
+          },
         },
       },
     },
@@ -586,6 +613,20 @@ var myTree = {
           born: 1901,
           birthplace: 'Nebraska'
         },
+        father: {
+          data: {
+            name: 'Sol Goldstrom',
+            gender: 'male',
+            birthplace: 'Germany'
+          },
+        },
+        mother: {
+          data: {
+            name: 'Claire Goldstrom',
+            gender: 'female',
+            birthplace: 'Nebraska'
+          },
+        },
       },
       mother: {
         data: {
@@ -594,6 +635,20 @@ var myTree = {
           born: 1907,
           birthplace: 'Brooklyn, NY'
         },
+        father: {
+          data: {
+            name: 'Morris Williamson',
+            gender: 'male',
+            birthplace: 'Russia'
+          }
+        },
+        mother: {
+          data: {
+            name: 'Lena Williamson',
+            gender: 'female',
+            birthplace: 'Russia'
+          }
+        }
       },
     },
   },
